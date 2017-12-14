@@ -125,8 +125,27 @@ and `@param`.
 - (void)doSomething:(NSString *)tag;
 ```
 
-<a name="comments--singleline"></a><a name="4.2"></a>
-- [4.2](#comments--singleline) Use `//` for single line comments.
+<a name="comments--multiline"></a><a name="4.2"></a>
+- [4.2](#comments--multiline) Use `/** ... */` for block comments.
+
+```
+// good
+
+/*!
+* @brief This does something.
+* @param tag The tag.
+*/
+- (BOOL)doSomething:(NSString *)tag;
+
+// bad
+
+// @brief This does something.
+// @param tag The tag.
+- (BOOL)doSomething:(NSString *)tag;
+```
+
+<a name="comments--singleline"></a><a name="4.3"></a>
+- [4.3](#comments--singleline) Use `//` for single line comments.
 Place single line comments on a newline above the subject of the comment.
 Put an empty line before the comment unless it's on the first line of a block.
 
@@ -171,8 +190,8 @@ int active = true; // is current tab
 }
 ```
 
-<a name="comments--spaces"></a><a name="4.3"></a>
-- [4.3](#comments--spaces) Start all comments with a space to make it easier to read.
+<a name="comments--spaces"></a><a name="4.4"></a>
+- [4.4](#comments--spaces) Start all comments with a space to make it easier to read.
 
 ```
 // good
@@ -184,8 +203,8 @@ int active = true;
 int active = true;
 ```
 
-<a name="comments--fixme"></a><a name="4.4"></a>
-- [4.4](#comments--fixme) Use `// FIXME:` to annotate problems.
+<a name="comments--fixme"></a><a name="4.5"></a>
+- [4.5](#comments--fixme) Use `// FIXME:` to annotate problems.
 
 ```
 @implementation Calculator
@@ -203,8 +222,8 @@ int active = true;
 @end
 ```
 
-<a name="comments--todo"></a><a name="4.5"></a>
-- [7.6](#comments--todo) Use `// TODO:` to annotate solutions to problems.
+<a name="comments--todo"></a><a name="4.6"></a>
+- [4.6](#comments--todo) Use `// TODO:` to annotate solutions to problems.
 
 ```
 @implementation Calculator
