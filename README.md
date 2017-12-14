@@ -1,8 +1,3 @@
---- 
-title: Appcom iOS Style Guide
-author: appcom interactive GmbH
----
-
 # Appcom iOS Style Guide
 
 This document describes the style guide applied to iOS projects for appcom interactive GmbH. It describes rules how to 
