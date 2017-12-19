@@ -24,21 +24,16 @@ So use it in your favor if you want to and/or override the style guide in any wa
 
 ### Xcode version
 
-The used Xcode version should always be the latest available stable version. You should not use
+The used Xcode version must always be the latest available stable version if possible. You must not use
 a beta version since this can break the continuous integration system.
 
 ### Xcode class prefix
 
-In the Project the Organization should be set as `appcom interactive GmbH` and the 
-Class-Prefix should be `AC`.
+In the Project the Organization must be set as `appcom interactive GmbH` and the Class-Prefix `AC`.
 
 ### Xcode structure
 
-Project structure is important since it helps when navigating through the code and has a huge
-impact of the overall maintainability of the project. Each group that contains files should refer to a corresponding
-folder, so that the files on the harddisk are organized as well. Since iOS Projects should follow the MVC-Pattern, the
-folder structure should represent this and keep this Pattern straight forward. The following table will list all folders
-that should be present in the project:
+Project structure is important since it helps when navigating through the code and has a huge impact of the overall maintainability of the project. Each group that contains files must refer to a corresponding folder if possible, so that the files on the harddisk are organized as well. Since iOS Projects follow the MVC-Pattern, the folder structure should represent this and keep this Pattern straight forward. The following table will list all folders that must be present in the project:
 
 | Folder / Group | Description |
 |---|---|
@@ -52,11 +47,8 @@ that should be present in the project:
 
 ### Xcode targets
 
-A Xcode-Project contains at least one target. Depending on the project there can be multiple
-shared targets. In many cases there are 3 targets that represent the following environments: develop, staging and 
-production. If there are changes applied to one of the targets, the other targets should be considered for these changes
-too. If for example classes are added, these classes are most likely needed by the other targets too. At the end, if the
-implementation work is done, all targets have to at least compile and run. 
+A Xcode-Project contains at least one target. Depending on the project there can be multiple shared targets. In many cases there are 3 targets that represent the following environments: develop, staging and  production. 
+If there are changes applied to one of the targets, the other targets must be considered for these changes too. If for example classes are added, these classes are most likely needed by the other targets too. At the end, if the implementation work is done, all targets have to at least compile and run. 
 
 **[back to top](#table-of-contents)**
 
@@ -64,7 +56,7 @@ implementation work is done, all targets have to at least compile and run.
 
 ### Artifact name
 
-The artifact should be named after the following scheme:
+The artifact must be named after the following scheme:
 
 ```
 $COMPANYNAME$-$APPNAME$-$STAGE$-$VERSION$.$BUILDNUMBER$.ipa
@@ -89,17 +81,12 @@ Make sure to migrate also major releases if possible.
 
 ### Library provision
 
-Libraries should be included using git submodules if compiled within the project itself or using an artefact 
-repository (like sonatype nexus) if precompiled. Provide a script for installing these if needed. 
-The name of the script should be install-deps.sh and placed at the source root.
+Libraries must be included using git submodules if compiled within the project itself or using an artefact repository (like sonatype nexus) if precompiled. Provide a script for installing these if needed. The name of the script must be install-deps.sh and placed at the source root.
 Don't use any dependency managers like Cocoapods.
 
 ### Folder
 
-Dependencies should be found and structured at a well known place. Always place them 
-under the `deps` folder at souce root. Precompiled libraries should be placed under the subfolder `lib` and the 
-corresponding header files should be under the subfolder `include`. In the Xcode-Project the `Header Search Path` should 
-contain the entry `$(SRCROOT)/deps/include` and the `Library Search Path` should contain `$(SRCROOT)/deps/lib`.
+Dependencies should be found and structured at a well known place. Therefore these must be placed under the `deps` folder at the souce root. Precompiled libraries must be placed under the subfolder `lib` and the corresponding header files must be under the subfolder `include`. In the Xcode-Project the `Header Search Path` must contain the entry `$(SRCROOT)/deps/include` and the `Library Search Path` must contain `$(SRCROOT)/deps/lib`.
 
 **[back to top](#table-of-contents)**
 
@@ -107,10 +94,7 @@ contain the entry `$(SRCROOT)/deps/include` and the `Library Search Path` should
 
 ### Documentation
 
-Every class and it's methods should contain a description of what it is for and how it
-does it's task. To utilize Xcodes doxygen support and to be able to generate a documentation, these descriptions should
-use the doxygen syntax. To be uniformly the `!` is used to mark a doxygen comment and `@` to mark commands like `@brief`
-and `@param`.
+Every class and it's methods must contain a description of what it is for and how it does it's task. To utilize Xcodes doxygen support and to be able to generate a documentation, these descriptions must use the doxygen syntax. To be uniformly the `!` is used to mark a doxygen comment and `@` to mark commands like `@brief` and `@param`.
 
 ```
 // good
@@ -156,8 +140,7 @@ Use `/*! ... */` for block comments.
 ### Singleline comment
 
 Use `//` for single line comments.
-Place single line comments on a newline above the subject of the comment.
-Put an empty line before the comment unless it's on the first line of a block.
+Place single line comments on a newline above the subject of the comment. Put an empty line before the comment unless it's on the first line of a block.
 
 ```
 // good
@@ -257,9 +240,8 @@ Use `// TODO:` to annotate solutions to problems.
 
 ## File Names
 
-File names should reflect the name of the class implementation that they contain—including case.
-
-Follow the convention that your project uses. File extensions should be as follows:
+File names must reflect the name of the class implementation that they contain—including case.
+Follow the convention that your project uses. File extensions must be as follows:
 
 | Extension | Type |
 |---|---|
@@ -271,8 +253,8 @@ Follow the convention that your project uses. File extensions should be as follo
 | .c | C implementation file |
 | .swift | Swift implementation file |
 
-Files containing code that may be shared across projects or used in a large project should have a clearly unique name, typically including the project or class prefix.
-File names for categories should include the name of the class being extended, like ACNSString+Utils.h or NSTextView+ACAutocomplete.h
+Files containing code that may be shared across projects or used in a large project must have a clearly unique name, typically including the project or class prefix.
+File names for categories must include the name of the class being extended, like ACNSString+Utils.h or NSTextView+ACAutocomplete.h
 
 **[back to top](#table-of-contents)**
 
@@ -391,7 +373,7 @@ You can make violations easier to spot by enabling Preferences > Text Editing > 
 
 ##### Method Declarations and Definitions
 
-One space should be used between the - or + and the return type, and no spacing in the parameter list except between parameters.
+One space must be used between the - or + and the return type, and no spacing in the parameter list except between parameters.
 
 ```
 // good
@@ -442,7 +424,7 @@ for (int i = 0; i < 5; ++i)
 }
 ```
 
-Intentional fall-through to the next case should be documented with a comment unless the case has no intervening code before the next case.
+Intentional fall-through to the next case must be documented with a comment unless the case has no intervening code before the next case.
 
 ```
 // good
@@ -496,8 +478,8 @@ v = w * x+y / z;
 
 ##### Method Invocations
 
-Method invocations should be formatted much like method declarations.
-When there’s a choice of formatting styles, follow the convention already used in a given source file. Invocations should have all arguments on one line:
+Method invocations must be formatted much like method declarations.
+When there’s a choice of formatting styles, follow the convention already used in a given source file. Invocations must have all arguments on one line:
 
 ```
 // good
@@ -512,6 +494,7 @@ or have one argument per line, with colons aligned:
                name:arg2
               error:arg3];
 ```
+
 Don’t use any of these styles:
 
 ```
@@ -543,8 +526,9 @@ Invocations containing multiple inlined blocks may have their parameter names le
 
 ##### Function Calls
 
-Function calls should include as many parameters as fit on each line, except where shorter lines are needed for clarity or documentation of the parameters.
-Continuation lines for function parameters may be indented to align with the opening parenthesis, or may have a four-space indent.
+Function calls must include as many parameters as fit on each line, except where shorter lines are needed for clarity or documentation of the parameters.
+Continuation lines for function parameters must be indented to align with the opening parenthesis.
+If this conflicts with the [Line Length Limit](#line-length), it must have a four-space indent.
 
 ```
 // good
@@ -576,15 +560,13 @@ UpdateTally(scoreHeuristic, x, y, z);
 
 ### Classes
 
-Add always a description method for entities and models. Why: You almost always
-have the need to log the current state of a pojo. And that is when you release you get something like this 
-`<ACMyClass: 0x170010840>`. So keep yourself from this and create a `- (NSString *)description`-Method.
+Add always a description method for entities and models. Why: You almost always have the need to log the current state of a pojo. And that is when you release you get something like this `<ACMyClass: 0x170010840>`. So keep yourself from this and create a `- (NSString *)description`-Method.
 
 **[back to top](#table-of-contents)**
 
 ### Naming Conventions
 
-Names should be as descriptive as possible, within reason. Follow standard [Objective-C naming rules](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html).
+Names must be as descriptive as possible, within reason. Follow standard [Objective-C naming rules](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html).
 Avoid non-standard abbreviations. Don’t worry about saving horizontal space as it is far more important to make your code immediately understandable by a new reader. For example:
 
 ```
@@ -635,9 +617,7 @@ NSString* first_name = "Hans";
 
 #### Acronyms and initialisms
 
-Acronyms and initialisms should always follow the camelCase rule.
-
-`Why? Names are for readability, not to appease a computer algorithm.`
+Acronyms and initialisms must always follow the camelCase rule.
 
 ```
 // good
@@ -673,7 +653,7 @@ For example: `myLocalVariable`, `_myInstanceVariable`, `gMyGlobalVariable`, `kMy
 
 ### Avoid Throwing Exceptions
 
-Don’t `@throw` Objective-C exceptions, but you should be prepared to catch them from third-party or OS calls.
+Don’t `@throw` Objective-C exceptions, but you must be prepared to catch them from third-party or OS calls.
 
 This follows the recommendation to use error objects for error delivery in [Apple’s Introduction to Exception Programming Topics for Cocoa](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/Exceptions/Exceptions.html).
 
@@ -732,11 +712,11 @@ Import headers using their path relative to the project’s source directory.
 
 Avoid macros, especially where const variables, enums, XCode snippets, or C functions may be used instead.
 
-Macros make the code you see different from the code the compiler sees. Modern C renders traditional uses of macros for constants and utility functions unnecessary. Macros should only be used when there is no other solution available.
+Macros make the code you see different from the code the compiler sees. Modern C renders traditional uses of macros for constants and utility functions unnecessary. Macros must only be used when there is no other solution available.
 
 Where a macro is needed, use a unique name to avoid the risk of a symbol collision in the compilation unit. If practical, keep the scope limited by `#undefining` the macro after its use.
 
-Macro names should use `SHOUTY_SNAKE_CASE`—all uppercase letters with underscores between words. Function-like macros may use C function naming practices. Do not define macros that appear to be C or Objective-C keywords.
+Macro names must use `SHOUTY_SNAKE_CASE`—all uppercase letters with underscores between words. Function-like macros may use C function naming practices. Do not define macros that appear to be C or Objective-C keywords.
 
 ```
 // good
@@ -761,7 +741,7 @@ Avoid macros that expand to unbalanced C or Objective-C constructs. Avoid macros
 
 Avoid macros that generate class, property, or method definitions in headers to be used as public API. These only make the code hard to understand, and the language already has better ways of doing this.
 
-Avoid macros that generate method implementations, or that generate declarations of variables that are later used outside of the macro. Macros shouldn’t make code hard to understand by hiding where and how a variable is declared.
+Avoid macros that generate method implementations, or that generate declarations of variables that are later used outside of the macro. Macros must not make code hard to understand by hiding where and how a variable is declared.
 
 ```
 // bad
@@ -788,7 +768,7 @@ Nonstandard extensions to C/Objective-C may not be used unless otherwise specifi
 
 Compilers support various extensions that are not part of standard C. Examples include compound statement expressions (e.g. foo = ({ int x; Bar(&x); x })) and variable-length arrays.
 
-__attribute__ is an approved exception, as it is used in Objective-C API specifications.
+`__attribute__` is an approved exception, as it is used in Objective-C API specifications.
 
 The binary form of the conditional operator, A ?: B, is an approved exception.
 
@@ -798,7 +778,7 @@ The binary form of the conditional operator, A ?: B, is an approved exception.
 
 ### Image Naming
 
-Images should be named after the following pattern:
+Images must be named after the following pattern:
 
 ```
 <WHAT>_<WHERE>_<DESCRIPTION>[_<SIZE>][_STATE]
@@ -810,20 +790,16 @@ bg_login_background
 ic_login_button_small_pressed
 ```
 
-The `WHAT` denodes the type of the drawable. It can be one of the
-following:
+The `WHAT` denodes the type of the drawable. It can be one of the following:
 
 * ic (Icons)
 * bg (Backgrounds)
 * shape (Shapes)
 
-The `WHERE` describes in which part of the app the drawable is used.
-If the drawable is used in more than one screen use `all`. The
-`DESCRIPTION` should tell the reader what the actual purpose of the
-drawable is. The `SIZE` part is optional and describes the size of the
-drawable. This can either be a measurable (e.g. 24dp) or a generic
-term (e.g. small). `STATE` indicates optionally the state of the
-drawable. It can be one of the following:
+The `WHERE` describes in which part of the app the drawable is used. If the drawable is used in more than one screen use `all`.
+The `DESCRIPTION` must tell the reader what the actual purpose of the drawable is.
+The `SIZE` part is optional and describes the size of the drawable. This can either be a measurable (e.g. 24dp) or a generic term (e.g. small).
+`STATE` indicates optionally the state of the drawable. It can be one of the following:
 
 * normal (can be omitted)
 * disabled
@@ -836,8 +812,8 @@ drawable. It can be one of the following:
 
 ### Logger
 
-NSLog logs an error message to the Apple System Log facility and therefore shouldn't be used for debug logging.
-Besides NSLog - which shouldn't be used in production code - Apple provides a library for logging. This library and the appropiate log level should be used instead of the commonly used NSLog.
+NSLog logs an error message to the Apple System Log facility and therefore must not be used for debug logging.
+Besides NSLog - which must not be used in production code - Apple provides a library for logging. This library and the appropiate log level must be used instead of the commonly used NSLog.
 
 ```
 // example
@@ -874,29 +850,23 @@ Here is a list of log levels and their meaning:
 
 ### Logging Messages
 
-Write meaningful log messages. This sounds easy but is in fact really hard. Keep in mind,
-that you sometimes log for the event of an error, which in reality occurs only rarely. 
-But if it does, you depend on a clear log message along with an expressive payload. A good log message should consist of
-the following items:
+Write meaningful log messages. This sounds easy but is in fact really hard. Keep in mind, that you sometimes log for the event of an error, which in reality occurs only rarely. 
+But if it does, you depend on a clear log message along with an expressive payload. A good log message must consist of the following items:
 
 * The filename and linenumber of the log statement (for Objective-C this are: `__FILE__` and `__LINE__` and for Swift these are: `#file` and `#line`)
 * A meaningful log message
-* An expressive payload, usually a JSON (That's why you should always add a description Method - see [here](#classes-constructors--tostring)
+* An expressive payload, usually a JSON (That's why you must always add a description Method - see [here](#classes)
 
 ### Logging Message Language
 
-Write your log messages in english. English is a well known language both in terms
-of writing and reading. Furthermore does it not contain any special characters, which means the it can be logged with
-ASCII. This is especially important when performing log rotation, since you do not know where your logs are stored.
+Write your log messages in english. English is a well known language both in terms of writing and reading. Furthermore does it not contain any special characters, which means that it can be logged with ASCII. This is especially important when performing log rotation, since you do not know where your logs are stored.
 
 ### Logging Payload
 
 Always log with payload (i.e. context).
-The log message often is not sufficient when tracing bugs. You almost always need additional information. So just log
-them along with the message and you keep yourself from deploying a new version of the app just to improve log messages.
+The log message often is not sufficient when tracing bugs. You almost always need additional information. So just log them along with the message and you keep yourself from deploying a new version of the app just to improve log messages.
 
-Make sure that the payload is well formatted and complete. The format helps you to filter and/or search for certain 
-events.
+Make sure that the payload is well formatted and complete. The format helps you to filter and/or search for certain events.
 
 ```
 // good
@@ -914,10 +884,9 @@ Transaction '63287' failed: Checksum 'null' is invalid!
 ## Roadmap 
 
 This section describes items, which will be added to this style guide in the future.
-These items are categorized in two sections namely `next` for items added in the next release and `future` for items 
-added in future releases without a fixed date.
+These items are categorized in two sections namely `next` for items added in the next release and `future` for items added in future releases without a fixed date.
 
-### Next 
+### Next
 
 * Swift conventions
 * Conventions for Logging
