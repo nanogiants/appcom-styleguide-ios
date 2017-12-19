@@ -1,38 +1,48 @@
 # Appcom iOS Style Guide
 
-This document describes the style guide applied to iOS projects for appcom interactive GmbH. It describes rules how to 
-organize your project, dependencies and files, so that some best practises are held.
-It is based on the [Appcom General Code Style Guide](http://appcom-bitbucket/projects/APCON/repos/appcom-conventions-general) 
-which should be known to understand all parts of this guide.
+This document describes the style guide applied to iOS projects for appcom interactive GmbH. It describes rules how to organize your project, dependencies and files, so that some best practises are held. It is based on the [Appcom General Code Style Guide](http://appcom-bitbucket/projects/APCON/repos/appcom-conventions-general) which should be known to understand all parts of this guide.
 
 So use it in your favor if you want to and/or override the style guide in any way you want.
 
 ## Table of Contents
 
-* [Xcode](#xcode)
-* [Artifacts](#artifacts)
-* [Dependencies](#dependencies)
-* [Comments / Doxygen](#comments)
-* [File Names](#file-names)
-* [Objective-C](#objective-c)
-* [Asset Naming Conventions](#asset-naming-conventions)
-* [Logging](#logging)
-* [Roadmap](#roadmap)
-* [License](#license)
+<a name="table-of-contents"></a>
+
+1. [Xcode](#xcode)
+1. [Artifacts](#artifacts)
+1. [Dependencies](#dependencies)
+1. [Comments / Doxygen](#comments)
+1. [File Names](#file-names)
+1. [Objective-C](#objective-c)
+1. [Asset Naming Conventions](#asset-naming-conventions)
+1. [Logging](#logging)
+1. [Roadmap](#roadmap)
+1. [Resources](#resources)
+1. [License](#license)
 
 ## Xcode
 
+<a name="xcode"></a>
+
 ### Xcode version
 
-The used Xcode version must always be the latest available stable version if possible. You must not use
-a beta version since this can break the continuous integration system.
+<a name="xcode-version"></a>
+
+- [1.1](#xcode-version)
+The used Xcode version must always be the latest available stable version if possible. You must not use a beta version since this can break the continuous integration system.
 
 ### Xcode class prefix
 
+<a name="xcode-class-prefix"></a>
+
+- [1.2](#xcode-class-prefix)
 In the Project the Organization must be set as `appcom interactive GmbH` and the Class-Prefix `AC`.
 
 ### Xcode structure
 
+<a name="xcode-structure"></a>
+
+- [1.3](#xcode-structure)
 Project structure is important since it helps when navigating through the code and has a huge impact of the overall maintainability of the project. Each group that contains files must refer to a corresponding folder if possible, so that the files on the harddisk are organized as well. Since iOS Projects follow the MVC-Pattern, the folder structure should represent this and keep this Pattern straight forward. The following table will list all folders that must be present in the project:
 
 | Folder / Group | Description |
@@ -47,6 +57,9 @@ Project structure is important since it helps when navigating through the code a
 
 ### Xcode targets
 
+<a name="xcode-targets"></a>
+
+- [1.4](#xcode-targets)
 A Xcode-Project contains at least one target. Depending on the project there can be multiple shared targets. In many cases there are 3 targets that represent the following environments: develop, staging and  production. 
 If there are changes applied to one of the targets, the other targets must be considered for these changes too. If for example classes are added, these classes are most likely needed by the other targets too. At the end, if the implementation work is done, all targets have to at least compile and run. 
 
@@ -54,8 +67,13 @@ If there are changes applied to one of the targets, the other targets must be co
 
 ## Artifacts
 
+<a name="artifacts"></a>
+
 ### Artifact name
 
+<a name="artifacts-name"></a>
+
+- [2.1](#artifacts-name)
 The artifact must be named after the following scheme:
 
 ```
@@ -74,8 +92,13 @@ swipe-0.0.1.ipa
 
 ## Dependencies
 
+<a name="dependencies"></a>
+
 ### Library version
 
+<a name="dependencies-library-version"></a>
+
+- [3.1](#dependencies-library-version)
 Always use the latest stable version of a library if possible.
 Make sure to migrate also major releases if possible.
 
@@ -899,7 +922,7 @@ These items are categorized in two sections namely `next` for items added in the
 
 **[back to top](#table-of-contents)**
 
-## Resources 
+## Resources
 
 ### Documentation
 
