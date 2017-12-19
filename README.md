@@ -13,13 +13,10 @@ So use it in your favor if you want to and/or override the style guide in any wa
 * [Artifacts](#artifacts)
 * [Dependencies](#dependencies)
 * [Comments / Doxygen](#comments)
-* [Objective-C](#objc-strings)
-  * [Strings](#objc-strings)
-  * [Classes](#objc-classes)
-  * [Naming Conventions](#objc-naming-conventions)
-* [Swift](#swift-version)
-* [Asset Naming Conventions](#asset-naming-conventions--images)
-* [Logging](#logging--logger)
+* [File Names](#file-names)
+* [Objective-C](#objective-c)
+* [Asset Naming Conventions](#asset-naming-conventions)
+* [Logging](#logging)
 * [Roadmap](#roadmap)
 * [License](#license)
 
@@ -92,9 +89,9 @@ Make sure to migrate also major releases if possible.
 
 ### Library provision
 
-Libraries should be included using git submodules if compiled within the
-project itself or using an artefact repository (like sonatype nexus) if precompiled. Provide a script for installing 
-these if needed. The name of the script should be install-deps.sh and placed at the source root.
+Libraries should be included using git submodules if compiled within the project itself or using an artefact 
+repository (like sonatype nexus) if precompiled. Provide a script for installing these if needed. 
+The name of the script should be install-deps.sh and placed at the source root.
 Don't use any dependency managers like Cocoapods.
 
 ### Folder
@@ -258,23 +255,326 @@ Use `// TODO:` to annotate solutions to problems.
 @end
 ```
 
+## File Names
+
+File names should reflect the name of the class implementation that they contain—including case.
+
+Follow the convention that your project uses. File extensions should be as follows:
+
+| Extension | Type |
+|---|---|
+| .h | C/Objective-C/Objective-C++ header file |
+| .hpp | C++ header file |
+| .m | Objective-C implementation file |
+| .mm | Objective-C++ implementation file |
+| .cpp | Pure C++ implementation file |
+| .c | C implementation file |
+| .swift | Swift implementation file |
+
+Files containing code that may be shared across projects or used in a large project should have a clearly unique name, typically including the project or class prefix.
+File names for categories should include the name of the class being extended, like ACNSString+Utils.h or NSTextView+ACAutocomplete.h
+
 **[back to top](#table-of-contents)**
 
 ## Objective-C
 
-### Objective-C Strings
+### Files
 
-<a name="strings--format"></a><a name="5.1"></a>
-- [5.1](#strings--format)
+#### File name
+
+The source file name consists of the case-sensitive name of the top-level class it contains plus the `.m` or `.mm` extension.
+
+#### File encoding: UTF-8
+
+Source files are encoded in UTF-8.
+
+#### Whitespace characters
+
+Aside from the line terminator sequence, the ASCII horizontal space character (0x20) is the only whitespace character that appears anywhere in a source file.
+
+This implies that:
+
+* All other whitespace characters in string and character literals are escaped.
+* Tab characters are not used for indentation.
+
+#### Header file structure
+
+A header file consists of, *in order*:
+
+* License or copyright information, if present
+* Import statements
+* Forward declarations
+* Protocol definitions
+* At most one top-level class
+
+#### Source file structure
+
+A source file consists of, *in order*:
+
+* License or copyright information, if present
+* Import statements
+* Exactly one top-level class
 
 **[back to top](#table-of-contents)**
 
-### Objective-C Classes
+### Formatting
 
-<a name="classes-constructors--constructor-variables"></a><a name="5.2"></a>
-- [5.2](#classes-constructors--constructor-variables)
+#### Braces
 
-#### Objective-C Class Description
+##### Braces are used where optional
+
+Braces are used with `if`, `else`, `for`, `do` and `while` statements, even when the body is empty or contains only a single statement.
+
+##### Nonempty blocks
+
+Braces have the following rules for nonempty blocks and block-like constructs:
+
+* Line break before the opening brace.
+* Line break after the opening brace.
+* Line break before the closing brace.
+* Line break after the closing brace, only if that brace terminates a statement or terminates the body of a method, constructor, or named class. For example, there is no line break after the brace if it is followed by a closing square bracket ( ] ) or a comma.
+
+```
+// good
++ (instancetype) init
+{
+    self = [super init];
+    if (self) 
+    {
+        // ...
+    }
+    return self;
+}
+
+// good
+[alert addAction:[UIAlertAction actionWithTitle:@"OK"
+                                          style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction *action)
+{
+  // ...
+}]];
+
+// bad
++ (instancetype) init {
+    // ...
+}
+
+// bad
+if (something) {
+    // ...
+}
+```
+
+##### Empty blocks: may be concise
+
+An empty block or block-like construct may be closed immediately after it is opened, with no characters or line break in between (`{}`), unless it is part of a multi-block statement (one that directly contains multiple blocks: `if/else` or `try/catch/finally`).
+
+```
+// This is acceptable
+void doNothing() {}
+
+// This is equally acceptable
+void doNothingElse()
+{
+}
+```
+
+##### Spaces vs. Tabs
+
+Use only spaces, and indent 4 spaces at a time. We use spaces for indentation. Do not use tabs in your code.
+You should set your editor to emit spaces when you hit the tab key, and to trim trailing spaces on lines.
+
+##### Line Length
+
+The maximum line length for Objective-C files is 120 columns.
+You can make violations easier to spot by enabling Preferences > Text Editing > Page guide at column: 120 in Xcode.
+
+##### Method Declarations and Definitions
+
+One space should be used between the - or + and the return type, and no spacing in the parameter list except between parameters.
+
+```
+// good
+- (void)doSomethingWithString:(NSString *)theString 
+{
+    // ...
+}
+```
+
+The spacing before the asterisk is optional. When adding new code, be consistent with the surrounding file’s style.
+If you have too many parameters to fit on one line, giving each its own line is preferred. If multiple lines are used, align each using the colon before the parameter.
+
+```
+// good
+- (void)doSomethingWithFoo:(ACFoo *)theFoo
+                      rect:(NSRect)theRect
+                  interval:(float)theInterval 
+{
+    // ...
+}
+```
+
+When the second or later parameter name is longer than the first, indent the second and later lines by at least four spaces, maintaining colon alignment:
+
+```
+// good
+- (void)short:(ACFoo *)theFoo
+          longKeyword:(NSRect)theRect
+    evenLongerKeyword:(float)theInterval
+                error:(NSError **)theError 
+{
+    // ...
+}
+```
+
+##### One statement per line
+
+Each statement is followed by a line break.
+
+##### Conditionals
+
+Include a space after `if`, `while`, `for`, and `switch`, and around comparison operators.
+
+```
+// good
+for (int i = 0; i < 5; ++i) 
+{
+}
+```
+
+Intentional fall-through to the next case should be documented with a comment unless the case has no intervening code before the next case.
+
+```
+// good
+switch (i) {
+    case 1:
+        // ...
+        break;
+    case 2:
+        j++;
+        // falls through
+    case 3: 
+    {
+        int k;
+        // ...
+        break;
+    }
+    case 4:
+    case 5:
+    case 6: 
+    default: break;
+}
+```
+
+##### Expressions
+
+Use a space around binary operators and assignments. Omit a space for a unary operator. Do not add spaces inside parentheses.
+
+```
+// good
+x = 0;
+v = w * x + y / z;
+v = -y * (x + z);
+
+// bad
+v = -y * ( x + z );
+v = x * ( x+z );
+```
+
+Factors in an expression may omit spaces.
+
+```
+// good
+v = w*x + y/z;
+
+// bad
+v = w*x+y/z;
+
+// bad
+v = w * x+y / z;
+```
+
+##### Method Invocations
+
+Method invocations should be formatted much like method declarations.
+When there’s a choice of formatting styles, follow the convention already used in a given source file. Invocations should have all arguments on one line:
+
+```
+// good
+[myObject doFooWith:arg1 name:arg2 error:arg3];
+```
+
+or have one argument per line, with colons aligned:
+
+```
+// good
+[myObject doFooWith:arg1
+               name:arg2
+              error:arg3];
+```
+Don’t use any of these styles:
+
+```
+// bad
+[myObject doFooWith:arg1 name:arg2  // some lines with >1 arg
+              error:arg3];
+
+// bad
+[myObject doFooWith:arg1
+               name:arg2 error:arg3];
+
+// bad
+[myObject doFooWith:arg1
+          name:arg2  // aligning keywords instead of colons
+          error:arg3];
+```
+
+As with declarations and definitions, when the first keyword is shorter than the others, indent the later lines by at least four spaces, maintaining colon alignment:
+
+```
+// good
+[myObj short:arg1
+          longKeyword:arg2
+    evenLongerKeyword:arg3
+                error:arg4];
+```
+
+Invocations containing multiple inlined blocks may have their parameter names left-aligned at a four space indent.
+
+##### Function Calls
+
+Function calls should include as many parameters as fit on each line, except where shorter lines are needed for clarity or documentation of the parameters.
+Continuation lines for function parameters may be indented to align with the opening parenthesis, or may have a four-space indent.
+
+```
+// good
+CFArrayRef array = CFArrayCreate(kCFAllocatorDefault, objects, numberOfObjects,
+                                 &kCFTypeArrayCallBacks);
+
+NSString *string = NSLocalizedStringWithDefaultValue(@"FEET", @"DistanceTable",
+    resourceBundle,  @"%@ feet", @"Distance for multiple feet");
+
+// Score heuristic.
+UpdateTally(scores[x] * y + bases[x],
+            x, y, z);
+
+TransformImage(image,
+               x1, x2, x3,
+               y1, y2, y3,
+               z1, z2, z3);
+```
+
+Use local variables with descriptive names to shorten function calls and reduce nesting of calls.
+
+```
+// good
+double scoreHeuristic = scores[x] * y + bases[x];
+UpdateTally(scoreHeuristic, x, y, z);
+```
+
+**[back to top](#table-of-contents)**
+
+### Classes
 
 Add always a description method for entities and models. Why: You almost always
 have the need to log the current state of a pojo. And that is when you release you get something like this 
@@ -282,17 +582,215 @@ have the need to log the current state of a pojo. And that is when you release y
 
 **[back to top](#table-of-contents)**
 
-### Objective-C Naming Conventions
+### Naming Conventions
 
-<a name="naming--descriptive"></a><a name="5.3"></a>
-- [5.3](#naming--descriptive)
+Names should be as descriptive as possible, within reason. Follow standard [Objective-C naming rules](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html).
+Avoid non-standard abbreviations. Don’t worry about saving horizontal space as it is far more important to make your code immediately understandable by a new reader. For example:
+
+```
+// good
+
+int numberOfErrors = 0;
+int completedConnectionsCount = 0;
+tickets = [[NSMutableArray alloc] init];
+userInfo = [someObject object];
+port = [network port];
+NSDate *gAppLaunchDate;
+
+// bad
+
+int w;
+int nerr;
+int nCompConns;
+tix = [[NSMutableArray alloc] init];
+obj = [someObject object];
+p = [network port];
+```
+
+#### Use camelCase when naming objects, functions and instances.
+
+```
+// good
+int test = 0;
+NSString* firstName = "Hans";
+
+// bad
+int TEst = 0;
+NSString* first_name = "Hans";
+```
+
+#### Use PascalCase only when naming classes.
+
+```
+// good
+@interface FileHandler
+    // ...
+@end
+
+// bad
+@interface fileHandler
+    // ...
+@end
+```
+
+#### Acronyms and initialisms
+
+Acronyms and initialisms should always follow the camelCase rule.
+
+`Why? Names are for readability, not to appease a computer algorithm.`
+
+```
+// good
+@interface SmsContainer
+    // ...
+@end
+
+// good
+@interface HttpRequest
+    // ...
+@end
+
+// bad
+@interface SMSContainer
+    // ...
+@end
+
+// bad
+@interface HTTPRequest
+    // ...
+@end
+```
+
+#### Variable Names
+
+Variable names typically start with a lowercase and use mixed case to delimit words.
+
+Instance variables have leading underscores. File scope or global variables have a prefix g and constants have a prefix k.
+For example: `myLocalVariable`, `_myInstanceVariable`, `gMyGlobalVariable`, `kMyConstant`.
+
 
 **[back to top](#table-of-contents)**
 
-## Swift
+### Avoid Throwing Exceptions
 
-<a name="swift-version"></a><a name="6.1"></a>
-- [6.1](#swift-version) TODO
+Don’t `@throw` Objective-C exceptions, but you should be prepared to catch them from third-party or OS calls.
+
+This follows the recommendation to use error objects for error delivery in [Apple’s Introduction to Exception Programming Topics for Cocoa](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/Exceptions/Exceptions.html).
+
+Use of `@try`, `@catch`, and `@finally` are allowed when required to properly use 3rd party code or libraries. If you do use them, please document exactly which methods you expect to throw.
+
+### Avoid +new
+
+Do not invoke the `NSObject` class method `new`, nor override it in a subclass. Instead, use `alloc` and `init` methods to instantiate retained objects.
+
+Modern Objective-C code explicitly calls `alloc` and an `init` method to create and retain an object. As the `new` class method is rarely used, it makes reviewing code for correct memory management more difficult.
+
+### Keep the Public API Simple
+
+Keep your class simple; avoid “kitchen-sink” APIs. If a method doesn’t need to be public, keep it out of the public interface.
+
+Unlike C++, Objective-C doesn’t differentiate between public and private methods; any message may be sent to an object. As a result, avoid placing methods in the public API unless they are actually expected to be used by a consumer of the class. This helps reduce the likelihood they’ll be called when you’re not expecting it. This includes methods that are being overridden from the parent class.
+
+Since internal methods are not really private, it’s easy to accidentally override a superclass’s “private” method, thus making a very difficult bug to squash. In general, private methods should have a fairly unique name that will prevent subclasses from unintentionally overriding them.
+
+### #import and #include
+
+`#import` Objective-C and Objective-C++ headers, and `#include` C/C++ headers.
+Choose between `#import` and `#include` based on the language of the header that you are including.
+
+
+### Order of Includes
+
+The standard order for header inclusion is the related header, operating system headers, language library headers, and finally groups of headers for other dependencies.
+
+The related header precedes others to ensure it has no hidden dependencies. For implementation files the related header is the header file. For test files the related header is the header containing the tested interface.
+
+A blank line may separate logically distinct groups of included headers.
+
+Import headers using their path relative to the project’s source directory.
+
+```
+// good
+#import "ProjectX/BazViewController.h"
+
+#import <Foundation/Foundation.h>
+
+#include <unistd.h>
+#include <vector>
+
+#include "base/basictypes.h"
+#include "base/integral_types.h"
+#include "util/math/mathutil.h"
+
+#import "ProjectX/BazModel.h"
+#import "Shared/Util/Foo.h"
+```
+
+**[back to top](#table-of-contents)**
+
+### Macros
+
+Avoid macros, especially where const variables, enums, XCode snippets, or C functions may be used instead.
+
+Macros make the code you see different from the code the compiler sees. Modern C renders traditional uses of macros for constants and utility functions unnecessary. Macros should only be used when there is no other solution available.
+
+Where a macro is needed, use a unique name to avoid the risk of a symbol collision in the compilation unit. If practical, keep the scope limited by `#undefining` the macro after its use.
+
+Macro names should use `SHOUTY_SNAKE_CASE`—all uppercase letters with underscores between words. Function-like macros may use C function naming practices. Do not define macros that appear to be C or Objective-C keywords.
+
+```
+// good
+#define AC_EXPERIMENTAL_BUILD ...
+
+// good, macro style
+// Assert unless X > Y
+#define AC_ASSERT_GT(X, Y) ...
+
+// good, function style.
+// Assert unless X > Y
+#define ACAssertGreaterThan(X, Y) ...
+
+// bad
+#define kIsExperimentalBuild ...
+
+// bad
+#define unless(X) if(!(X))
+```
+
+Avoid macros that expand to unbalanced C or Objective-C constructs. Avoid macros that introduce scope, or may obscure the capturing of values in blocks.
+
+Avoid macros that generate class, property, or method definitions in headers to be used as public API. These only make the code hard to understand, and the language already has better ways of doing this.
+
+Avoid macros that generate method implementations, or that generate declarations of variables that are later used outside of the macro. Macros shouldn’t make code hard to understand by hiding where and how a variable is declared.
+
+```
+// bad
+#define ARRAY_ADDER(CLASS) \
+  -(void)add ## CLASS ## :(CLASS *)obj toArray:(NSMutableArray *)array
+
+// bad - where is 'array' defined?
+ARRAY_ADDER(NSString) \
+{
+  if (array.count > 5) \
+  {
+    // ...
+  }
+}
+```
+
+Examples of acceptable macro use include assertion and debug logging macros that are conditionally compiled based on build settings—often, these are not compiled into release builds.
+
+**[back to top](#table-of-contents)**
+
+### Nonstandard Extensions
+
+Nonstandard extensions to C/Objective-C may not be used unless otherwise specified.
+
+Compilers support various extensions that are not part of standard C. Examples include compound statement expressions (e.g. foo = ({ int x; Bar(&x); x })) and variable-length arrays.
+
+__attribute__ is an approved exception, as it is used in Objective-C API specifications.
+
+The binary form of the conditional operator, A ?: B, is an approved exception.
 
 **[back to top](#table-of-contents)**
 
@@ -421,8 +919,8 @@ added in future releases without a fixed date.
 
 ### Next 
 
-* <strike>Conventions for Logging</strike>
-* Usage of ORMs in favor of native SQLite Classes
+* Swift conventions
+* Conventions for Logging
 * Describe Twine support for cross platform string sharing
 * Useful links
 
@@ -444,6 +942,15 @@ added in future releases without a fixed date.
 * [https://developer.apple.com/documentation/os/logging](https://developer.apple.com/documentation/os/logging)
 
 **[back to top](#table-of-contents)**
+
+## Related Work
+
+This Style Guide is inspired by the following Style Guides:
+
+* [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
+* [Google Objective-C Style Guide](http://google.github.io/styleguide/objcguide.html)
+* [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
+* [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
 
 ## License
 
