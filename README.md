@@ -13,7 +13,7 @@ So use it in your favor if you want to and/or override the style guide in any wa
 1. [Dependencies](#dependencies)
 1. [Comments / Doxygen](#comments)
 1. [File Names](#file-names)
-1. [Objective-C](#objective-c)
+1. [Objective-C](#objc)
 1. [Asset Naming Conventions](#asset-naming-conventions)
 1. [Logging](#logging)
 1. [Roadmap](#roadmap)
@@ -28,21 +28,21 @@ So use it in your favor if you want to and/or override the style guide in any wa
 
 <a name="xcode-version"></a>
 
-- [1.1](#xcode-version)
+[1.1](#xcode-version)
 The used Xcode version must always be the latest available stable version if possible. You must not use a beta version since this can break the continuous integration system.
 
 ### Xcode class prefix
 
 <a name="xcode-class-prefix"></a>
 
-- [1.2](#xcode-class-prefix)
+[1.2](#xcode-class-prefix)
 In the Project the Organization must be set as `appcom interactive GmbH` and the Class-Prefix `AC`.
 
 ### Xcode structure
 
 <a name="xcode-structure"></a>
 
-- [1.3](#xcode-structure)
+[1.3](#xcode-structure)
 Project structure is important since it helps when navigating through the code and has a huge impact of the overall maintainability of the project. Each group that contains files must refer to a corresponding folder if possible, so that the files on the harddisk are organized as well. Since iOS Projects follow the MVC-Pattern, the folder structure should represent this and keep this Pattern straight forward. The following table will list all folders that must be present in the project:
 
 | Folder / Group | Description |
@@ -59,7 +59,7 @@ Project structure is important since it helps when navigating through the code a
 
 <a name="xcode-targets"></a>
 
-- [1.4](#xcode-targets)
+[1.4](#xcode-targets)
 A Xcode-Project contains at least one target. Depending on the project there can be multiple shared targets. In many cases there are 3 targets that represent the following environments: develop, staging and  production. 
 If there are changes applied to one of the targets, the other targets must be considered for these changes too. If for example classes are added, these classes are most likely needed by the other targets too. At the end, if the implementation work is done, all targets have to at least compile and run. 
 
@@ -73,7 +73,7 @@ If there are changes applied to one of the targets, the other targets must be co
 
 <a name="artifacts-name"></a>
 
-- [2.1](#artifacts-name)
+[2.1](#artifacts-name)
 The artifact must be named after the following scheme:
 
 ```
@@ -98,25 +98,36 @@ swipe-0.0.1.ipa
 
 <a name="dependencies-library-version"></a>
 
-- [3.1](#dependencies-library-version)
+[3.1](#dependencies-library-version)
 Always use the latest stable version of a library if possible.
 Make sure to migrate also major releases if possible.
 
 ### Library provision
 
+<a name="dependencies-library-provision"></a>
+
+[3.2](#dependencies-library-provision)
 Libraries must be included using git submodules if compiled within the project itself or using an artefact repository (like sonatype nexus) if precompiled. Provide a script for installing these if needed. The name of the script must be install-deps.sh and placed at the source root.
 Don't use any dependency managers like Cocoapods.
 
 ### Folder
 
+<a name="dependencies-folder"></a>
+
+[3.3](#dependencies-folder)
 Dependencies should be found and structured at a well known place. Therefore these must be placed under the `deps` folder at the souce root. Precompiled libraries must be placed under the subfolder `lib` and the corresponding header files must be under the subfolder `include`. In the Xcode-Project the `Header Search Path` must contain the entry `$(SRCROOT)/deps/include` and the `Library Search Path` must contain `$(SRCROOT)/deps/lib`.
 
 **[back to top](#table-of-contents)**
 
 ## Comments / Doxygen
 
+<a name="comments"></a>
+
 ### Documentation
 
+<a name="comments-documentation"></a>
+
+[4.1](#comments-documentation)
 Every class and it's methods must contain a description of what it is for and how it does it's task. To utilize Xcodes doxygen support and to be able to generate a documentation, these descriptions must use the doxygen syntax. To be uniformly the `!` is used to mark a doxygen comment and `@` to mark commands like `@brief` and `@param`.
 
 ```
@@ -142,6 +153,9 @@ Every class and it's methods must contain a description of what it is for and ho
 
 ### Multiline comments
 
+<a name="comments-multiline-comments"></a>
+
+[4.2](#comments-multiline-comments)
 Use `/*! ... */` for block comments.
 
 ```
@@ -162,6 +176,9 @@ Use `/*! ... */` for block comments.
 
 ### Singleline comment
 
+<a name="comments-singleline-comment"></a>
+
+[4.3](#comments-singleline-comment)
 Use `//` for single line comments.
 Place single line comments on a newline above the subject of the comment. Put an empty line before the comment unless it's on the first line of a block.
 
@@ -208,6 +225,9 @@ int active = true; // is current tab
 
 ### Spaces
 
+<a name="comments-spaces"></a>
+
+[4.4](#comments-spaces)
 Start all comments with a space to make it easier to read.
 
 ```
@@ -222,6 +242,9 @@ int active = true;
 
 ### Fixme
 
+<a name="comments-fixme"></a>
+
+[4.5](#comments-fixme)
 Use `// FIXME:` to annotate problems.
 
 ```
@@ -242,6 +265,9 @@ Use `// FIXME:` to annotate problems.
 
 ### Todo
 
+<a name="comments-todo"></a>
+
+[4.6](#comments-todo)
 Use `// TODO:` to annotate solutions to problems.
 
 ```
@@ -263,6 +289,9 @@ Use `// TODO:` to annotate solutions to problems.
 
 ## File Names
 
+<a name="file-names"></a>
+
+[5](#file-names)
 File names must reflect the name of the class implementation that they contain—including case.
 Follow the convention that your project uses. File extensions must be as follows:
 
@@ -283,18 +312,31 @@ File names for categories must include the name of the class being extended, lik
 
 ## Objective-C
 
+<a name="objc"></a>
+
 ### Files
+
+<a name="objc-files"></a>
 
 #### File name
 
+<a name="objc-files-file-name"></a>
+
+[6.1.1](#objc-files-file-name)
 The source file name consists of the case-sensitive name of the top-level class it contains plus the `.m` or `.mm` extension.
 
 #### File encoding: UTF-8
 
+<a name="objc-files-file-encoding"></a>
+
+[6.1.2](#objc-files-file-encoding)
 Source files are encoded in UTF-8.
 
 #### Whitespace characters
 
+<a name="objc-files-whitespace-characters"></a>
+
+[6.1.3](#objc-files-whitespace-characters)
 Aside from the line terminator sequence, the ASCII horizontal space character (0x20) is the only whitespace character that appears anywhere in a source file.
 
 This implies that:
@@ -304,6 +346,9 @@ This implies that:
 
 #### Header file structure
 
+<a name="objc-files-header-file-structure"></a>
+
+[6.1.4](#objc-files-header-file-structure)
 A header file consists of, *in order*:
 
 * License or copyright information, if present
@@ -314,6 +359,9 @@ A header file consists of, *in order*:
 
 #### Source file structure
 
+<a name="objc-files-source-file-structure"></a>
+
+[6.1.5](#objc-files-source-file-structure)
 A source file consists of, *in order*:
 
 * License or copyright information, if present
@@ -324,14 +372,24 @@ A source file consists of, *in order*:
 
 ### Formatting
 
+<a name="objc-formatting"></a>
+
 #### Braces
+
+<a name="objc-formatting-braces"></a>
 
 ##### Braces are used where optional
 
+<a name="objc-formatting-braces-used"></a>
+
+[6.2.1](#objc-formatting-braces-used)
 Braces are used with `if`, `else`, `for`, `do` and `while` statements, even when the body is empty or contains only a single statement.
 
 ##### Nonempty blocks
 
+<a name="objc-formatting-braces-nonempty-blocks"></a>
+
+[6.2.2](#objc-formatting-braces-nonempty-blocks)
 Braces have the following rules for nonempty blocks and block-like constructs:
 
 * Line break before the opening brace.
@@ -372,6 +430,9 @@ if (something) {
 
 ##### Empty blocks: may be concise
 
+<a name="objc-formatting-braces-empty-blocks"></a>
+
+[6.2.3](#objc-formatting-braces-empty-blocks)
 An empty block or block-like construct may be closed immediately after it is opened, with no characters or line break in between (`{}`), unless it is part of a multi-block statement (one that directly contains multiple blocks: `if/else` or `try/catch/finally`).
 
 ```
@@ -384,17 +445,17 @@ void doNothingElse()
 }
 ```
 
-##### Spaces vs. Tabs
+#### Spaces vs. Tabs
 
 Use only spaces, and indent 4 spaces at a time. We use spaces for indentation. Do not use tabs in your code.
 You should set your editor to emit spaces when you hit the tab key, and to trim trailing spaces on lines.
 
-##### Line Length
+#### Line Length
 
 The maximum line length for Objective-C files is 120 columns.
 You can make violations easier to spot by enabling Preferences > Text Editing > Page guide at column: 120 in Xcode.
 
-##### Method Declarations and Definitions
+#### Method Declarations and Definitions
 
 One space must be used between the - or + and the return type, and no spacing in the parameter list except between parameters.
 
@@ -432,11 +493,11 @@ When the second or later parameter name is longer than the first, indent the sec
 }
 ```
 
-##### One statement per line
+#### One statement per line
 
 Each statement is followed by a line break.
 
-##### Conditionals
+#### Conditionals
 
 Include a space after `if`, `while`, `for`, and `switch`, and around comparison operators.
 
@@ -471,7 +532,7 @@ switch (i) {
 }
 ```
 
-##### Expressions
+#### Expressions
 
 Use a space around binary operators and assignments. Omit a space for a unary operator. Do not add spaces inside parentheses.
 
@@ -499,7 +560,7 @@ v = w*x+y/z;
 v = w * x+y / z;
 ```
 
-##### Method Invocations
+#### Method Invocations
 
 Method invocations must be formatted much like method declarations.
 When there’s a choice of formatting styles, follow the convention already used in a given source file. Invocations must have all arguments on one line:
@@ -547,7 +608,7 @@ As with declarations and definitions, when the first keyword is shorter than the
 
 Invocations containing multiple inlined blocks may have their parameter names left-aligned at a four space indent.
 
-##### Function Calls
+#### Function Calls
 
 Function calls must include as many parameters as fit on each line, except where shorter lines are needed for clarity or documentation of the parameters.
 Continuation lines for function parameters must be indented to align with the opening parenthesis.
