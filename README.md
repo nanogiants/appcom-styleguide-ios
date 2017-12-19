@@ -135,7 +135,7 @@ and `@param`.
 
 ### Multiline comments
 
-Use `/** ... */` for block comments.
+Use `/*! ... */` for block comments.
 
 ```
 // good
@@ -943,7 +943,7 @@ added in future releases without a fixed date.
 
 **[back to top](#table-of-contents)**
 
-## Related Work
+### Related Work
 
 This Style Guide is inspired by the following Style Guides:
 
