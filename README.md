@@ -879,7 +879,7 @@ that you sometimes log for the event of an error, which in reality occurs only r
 But if it does, you depend on a clear log message along with an expressive payload. A good log message should consist of
 the following items:
 
-* The filename and linenumber of the log statement (for Objective-C this are: __FILE__ and __LINE__ and for Swift these are: #file and #line)
+* The filename and linenumber of the log statement (for Objective-C this are: `__FILE__` and `__LINE__` and for Swift these are: `#file` and `#line`)
 * A meaningful log message
 * An expressive payload, usually a JSON (That's why you should always add a description Method - see [here](#classes-constructors--tostring)
 
