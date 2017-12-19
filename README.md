@@ -7,7 +7,7 @@ which should be known to understand all parts of this guide.
 
 So use it in your favor if you want to and/or override the style guide in any way you want.
 
-## Tables of Contents
+## Table of Contents
 
 * [Xcode](#xcode)
 * [Artifacts](#artifacts)
