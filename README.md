@@ -23,9 +23,8 @@ So use it in your favor if you want to and/or override the style guide in any wa
 ## Xcode
 
 <a name="xcode-version"></a>
-### Xcode version
+### [1.1](#xcode-version) Xcode version
 
-[1.1](#xcode-version)
 The used Xcode version must always be the latest available stable version if possible. You must not use a beta version since this can break the continuous integration system.
 
 <a name="xcode-class-prefix"></a>
