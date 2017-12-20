@@ -20,7 +20,7 @@ So use it in your favor if you want to and/or override the style guide in any wa
 1. [License](#license)
 
 <a name="xcode"></a>
-## Xcode
+## [1](#xcode) Xcode
 
 <a name="xcode-version"></a>
 ### [1.1](#xcode-version) Xcode version
@@ -56,7 +56,7 @@ If there are changes applied to one of the targets, the other targets must be co
 **[back to top](#table-of-contents)**
 
 <a name="artifacts"></a>
-## Artifacts
+## [2](#artifacts) Artifacts
 
 <a name="artifacts-name"></a>
 ### [2.1](#artifacts-name) Artifact name
@@ -78,7 +78,7 @@ swipe-0.0.1.ipa
 **[back to top](#table-of-contents)**
 
 <a name="dependencies"></a>
-## Dependencies
+## [3](#dependencies) Dependencies
 
 <a name="dependencies-library-version"></a>
 ### [3.1](#dependencies-library-version) Library version
@@ -100,7 +100,7 @@ Dependencies should be found and structured at a well known place. Therefore the
 **[back to top](#table-of-contents)**
 
 <a name="comments"></a>
-## Comments / Doxygen
+## [4](#comments) Comments / Doxygen
 
 <a name="comments-documentation"></a>
 ### [4.1](#comments-documentation) Documentation
@@ -278,10 +278,10 @@ File names for categories must include the name of the class being extended, lik
 **[back to top](#table-of-contents)**
 
 <a name="objc"></a>
-## Objective-C
+## [6](#objc) Objective-C
 
 <a name="objc-files"></a>
-### Files
+### [6.1](#objc-files) Files
 
 <a name="objc-files-file-name"></a>
 #### [6.1.1](#objc-files-file-name) File name
@@ -326,7 +326,7 @@ A source file consists of, *in order*:
 **[back to top](#table-of-contents)**
 
 <a name="objc-formatting"></a>
-### Formatting
+### [6.2](#objc-formatting) Formatting
 
 <a name="objc-formatting-braces"></a>
 #### [6.2.1](#objc-formatting-braces) Braces
@@ -827,7 +827,7 @@ The binary form of the conditional operator, A ?: B, is an approved exception.
 **[back to top](#table-of-contents)**
 
 <a name="asset-naming-conventions"></a>
-## Asset Naming Conventions
+## [7](#asset-naming-conventions) Asset Naming Conventions
 
 <a name="asset-naming-conventions-image-naming"></a>
 ### [7.1](#asset-naming-conventions-image-naming) Image Naming
@@ -863,7 +863,7 @@ The `SIZE` part is optional and describes the size of the drawable. This can eit
 **[back to top](#table-of-contents)**
 
 <a name="logging"></a>
-## Logging
+## [8](#logging) Logging
 
 <a name="logging-logger"></a>
 ### [8.1](#logging-logger) Logger
@@ -942,39 +942,42 @@ Transaction '63287' failed: Checksum 'null' is invalid!
 **[back to top](#table-of-contents)**
 
 <a name="roadmap"></a>
-## Roadmap
+## [9](#roadmap) Roadmap
 
 This section describes items, which will be added to this style guide in the future.
 These items are categorized in two sections namely `next` for items added in the next release and `future` for items added in future releases without a fixed date.
 
-### Next
+<a name="roadmap-next"></a>
+### [9.1](#roadmap-next) Next
 
 * Swift conventions
 * Conventions for Logging
 * Describe Twine support for cross platform string sharing
 * Useful links
 
-### Future 
+<a name="roadmap-future"></a>
+### [9.2](#roadmap-future) Future
 
 * Linter for continuous integration based on this style guide
 
 **[back to top](#table-of-contents)**
 
 <a name="resources"></a>
-## Resources
+## [10](#resources) Resources
 
-### Documentation
+<a name="resources-documentation"></a>
+### [10.1](#resources-documentation) Documentation
 
 * [http://www.stack.nl/~dimitri/doxygen/manual/docblocks.html](http://www.stack.nl/~dimitri/doxygen/manual/docblocks.html)
 
-### Logging
+<a name="resources-logging"></a>
+### [10.2](#resources-logging) Logging
 
 * [http://doing-it-wrong.mikeweller.com/2012/07/youre-doing-it-wrong-1-nslogdebug-ios.html](http://doing-it-wrong.mikeweller.com/2012/07/youre-doing-it-wrong-1-nslogdebug-ios.html)
 * [https://developer.apple.com/documentation/os/logging](https://developer.apple.com/documentation/os/logging)
 
-**[back to top](#table-of-contents)**
-
-### Related Work
+<a name="resources-related-work"></a>
+### [10.3](#resources-related-work) Related Work
 
 This Style Guide is inspired by the following Style Guides:
 
@@ -983,8 +986,10 @@ This Style Guide is inspired by the following Style Guides:
 * [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
 * [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
 
+**[back to top](#table-of-contents)**
+
 <a name="license"></a>
-## License
+## [11](#license) License
 
 (The MIT License)
 
