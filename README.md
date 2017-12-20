@@ -462,7 +462,8 @@ Intentional fall-through to the next case must be documented with a comment unle
 
 ```
 // good
-switch (i) {
+switch (i) 
+{
     case 1:
         // ...
         break;
