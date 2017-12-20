@@ -913,8 +913,8 @@ But if it does, you depend on a clear log message along with an expressive paylo
 * A meaningful log message
 * An expressive payload, usually a JSON (That's why you must always add a description Method - see [here](#classes)
 
-<a name="logging-log-messages"></a>
-### [8.4](#logging-log-messages) Logging Message Language
+<a name="logging-log-language"></a>
+### [8.4](#logging-log-language) Logging Message Language
 
 Write your log messages in english. English is a well known language both in terms of writing and reading. Furthermore does it not contain any special characters, which means that it can be logged with ASCII. This is especially important when performing log rotation, since you do not know where your logs are stored.
 
