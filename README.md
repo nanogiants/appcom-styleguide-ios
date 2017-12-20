@@ -329,15 +329,15 @@ A source file consists of, *in order*:
 ### Formatting
 
 <a name="objc-formatting-braces"></a>
-#### Braces
+#### [6.2.1](#objc-formatting-braces) Braces
 
 <a name="objc-formatting-braces-used"></a>
-##### [6.2.1](#objc-formatting-braces-used) Braces are used where optional
+##### [6.2.1.1](#objc-formatting-braces-used) Braces are used where optional
 
 Braces are used with `if`, `else`, `for`, `do` and `while` statements, even when the body is empty or contains only a single statement.
 
 <a name="objc-formatting-braces-nonempty-blocks"></a>
-##### [6.2.2](#objc-formatting-braces-nonempty-blocks) Nonempty blocks
+##### [6.2.1.2](#objc-formatting-braces-nonempty-blocks) Nonempty blocks
 
 Braces have the following rules for nonempty blocks and block-like constructs:
 
@@ -378,7 +378,7 @@ if (something) {
 ```
 
 <a name="objc-formatting-braces-empty-blocks"></a>
-##### [6.2.3](#objc-formatting-braces-empty-blocks) Empty blocks: may be concise
+##### [6.2.1.3](#objc-formatting-braces-empty-blocks) Empty blocks: may be concise
 
 An empty block or block-like construct may be closed immediately after it is opened, with no characters or line break in between (`{}`), unless it is part of a multi-block statement (one that directly contains multiple blocks: `if/else` or `try/catch/finally`).
 
@@ -393,19 +393,19 @@ void doNothingElse()
 ```
 
 <a name="objc-formatting-spacesvstabs"></a>
-#### [6.2.4](#objc-formatting-spacesvstabs) Spaces vs. Tabs
+#### [6.2.2](#objc-formatting-spacesvstabs) Spaces vs. Tabs
 
 Use only spaces, and indent 4 spaces at a time. We use spaces for indentation. Do not use tabs in your code.
 You should set your editor to emit spaces when you hit the tab key, and to trim trailing spaces on lines.
 
 <a name="objc-formatting-line-length"></a>
-#### [6.2.5](#objc-formatting-line-length) Line Length
+#### [6.2.3](#objc-formatting-line-length) Line Length
 
 The maximum line length for Objective-C files is 120 columns.
 You can make violations easier to spot by enabling Preferences > Text Editing > Page guide at column: 120 in Xcode.
 
 <a name="objc-formatting-method-declarations-and-defenitions"></a>
-#### [6.2.6](#objc-formatting-method-declarations-and-defenitions) Method Declarations and Definitions
+#### [6.2.4](#objc-formatting-method-declarations-and-defenitions) Method Declarations and Definitions
 
 One space must be used between the - or + and the return type, and no spacing in the parameter list except between parameters.
 
@@ -444,12 +444,12 @@ When the second or later parameter name is longer than the first, indent the sec
 ```
 
 <a name="objc-formatting-one-statement-per-line"></a>
-#### [6.2.7](#objc-formatting-one-statement-per-line) One statement per line
+#### [6.2.5](#objc-formatting-one-statement-per-line) One statement per line
 
 Each statement is followed by a line break.
 
 <a name="objc-formatting-conditionals"></a>
-#### [6.2.8](#objc-formatting-conditionals) Conditionals
+#### [6.2.6](#objc-formatting-conditionals) Conditionals
 
 Include a space after `if`, `while`, `for`, and `switch`, and around comparison operators.
 
@@ -486,7 +486,7 @@ switch (i)
 ```
 
 <a name="objc-formatting-expressions"></a>
-#### [6.2.9](#objc-formatting-expressions) Expressions
+#### [6.2.7](#objc-formatting-expressions) Expressions
 
 Use a space around binary operators and assignments. Omit a space for a unary operator. Do not add spaces inside parentheses.
 
@@ -515,7 +515,7 @@ v = w * x+y / z;
 ```
 
 <a name="objc-formatting-method-invocations"></a>
-#### [6.2.10](#objc-formatting-method-invocations) Method Invocations
+#### [6.2.8](#objc-formatting-method-invocations) Method Invocations
 
 Method invocations must be formatted much like method declarations.
 When there’s a choice of formatting styles, follow the convention already used in a given source file. Invocations must have all arguments on one line:
@@ -564,7 +564,7 @@ As with declarations and definitions, when the first keyword is shorter than the
 Invocations containing multiple inlined blocks may have their parameter names left-aligned at a four space indent.
 
 <a name="objc-formatting-function-calls"></a>
-#### [6.2.11](#objc-formatting-function-calls) Function Calls
+#### [6.2.9](#objc-formatting-function-calls) Function Calls
 
 Function calls must include as many parameters as fit on each line, except where shorter lines are needed for clarity or documentation of the parameters.
 Continuation lines for function parameters must be indented to align with the opening parenthesis.
