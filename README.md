@@ -254,6 +254,8 @@ Use `// TODO:` to annotate solutions to problems.
 @end
 ```
 
+**[back to top](#table-of-contents)**
+
 <a name="file-names"></a>
 ## [5](#file-names) File Names
 
