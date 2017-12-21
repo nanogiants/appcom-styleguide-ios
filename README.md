@@ -568,7 +568,7 @@ Invocations containing multiple inlined blocks may have their parameter names le
 
 Function calls must include as many parameters as fit on each line, except where shorter lines are needed for clarity or documentation of the parameters.
 Continuation lines for function parameters must be indented to align with the opening parenthesis.
-If this conflicts with the [Line Length Limit](#line-length), it must have a four-space indent.
+If this conflicts with the [Line Length Limit](#objc-formatting-line-length), it must have a four-space indent.
 
 ```
 // good
