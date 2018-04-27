@@ -449,6 +449,19 @@ When the second or later parameter name is longer than the first, indent the sec
 }
 ```
 
+<a name="objc-formatting-types-with-protocols"></a>
+#### [6.2.5](#objc-formatting-types-with-protocols) Types with Protocols
+
+There is no space between a class definition and the protocol specification.
+
+```
+// bad
+@property (nonatomic, weak) id <ACMyDelegate> delegate;
+
+// good
+@property (nonatomic, weak) id<ACMyDelegate> delegate;
+```
+
 <a name="objc-formatting-one-statement-per-line"></a>
 #### [6.2.5](#objc-formatting-one-statement-per-line) One statement per line
 
