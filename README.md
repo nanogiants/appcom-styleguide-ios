@@ -597,6 +597,11 @@ double scoreHeuristic = scores[x] * y + bases[x];
 UpdateTally(scoreHeuristic, x, y, z);
 ```
 
+<a name="objc-formatting-new-line-at-end-of-file"></a>
+#### [6.2.10](#objc-formatting-new-line-at-end-of-file) New line at the end of every source file (.m / .mm / .h)
+
+For better readability, every source file must end with an empty new line.
+
 **[back to top](#table-of-contents)**
 
 <a name="objc-classes"></a>
