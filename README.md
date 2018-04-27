@@ -14,6 +14,7 @@ So use it in your favor if you want to and/or override the style guide in any wa
 1. [File Names](#file-names)
 1. [Objective-C](#objc)
 1. [Asset Naming Conventions](#asset-naming-conventions)
+1. [Localization](#localization)
 1. [Logging](#logging)
 1. [Roadmap](#roadmap)
 1. [Resources](#resources)
@@ -50,7 +51,7 @@ Project structure is important since it helps when navigating through the code a
 <a name="xcode-targets"></a>
 ### [1.4](#xcode-targets) Xcode targets
 
-A Xcode-Project contains at least one target. Depending on the project there can be multiple shared targets. In many cases there are 3 targets that represent the following environments: develop, staging and  production. 
+A Xcode-Project contains at least one target. Depending on the project there can be multiple shared targets. In many cases there are 3 targets that represent the following environments: develop, staging and production. 
 If there are changes applied to one of the targets, the other targets must be considered for these changes too. If for example classes are added, these classes are most likely needed by the other targets too. At the end, if the implementation work is done, all targets have to at least compile and run. 
 
 **[back to top](#table-of-contents)**
@@ -862,11 +863,23 @@ The `SIZE` part is optional and describes the size of the drawable. This can eit
 
 **[back to top](#table-of-contents)**
 
+<a name="localization"></a>
+## [8](#localization) Localization
+
+<a name="localization-storyboards"></a>
+### [8.2](#localization-storyboards) Localizing Storyboards
+
+Don't localize Storyboards with the Interface Builder Tools for localization. Create an Outlet for every View-Item that needs to be localized and localize these within the corresponding ViewController.
+
+As convention all View-Items have to be localized in a method with the name `localizeStrings` in the ViewController.
+
+**[back to top](#table-of-contents)**
+
 <a name="logging"></a>
-## [8](#logging) Logging
+## [9](#logging) Logging
 
 <a name="logging-logger"></a>
-### [8.1](#logging-logger) Logger
+### [9.1](#logging-logger) Logger
 
 NSLog logs an error message to the Apple System Log facility and therefore must not be used for debug logging.
 Besides NSLog - which must not be used in production code - Apple provides a library for logging. This library and the appropiate log level must be used instead of the commonly used NSLog.
@@ -892,7 +905,7 @@ Besides NSLog - which must not be used in production code - Apple provides a lib
 ```
 
 <a name="logging-loglevels"></a>
-### [8.2](#logging-loglevels) Loglevels
+### [9.2](#logging-loglevels) Loglevels
 
 Apple provides a various amount of log levels each with its own purpose.
 Here is a list of log levels and their meaning:
@@ -906,7 +919,7 @@ Here is a list of log levels and their meaning:
 | OS_LOG_TYPE_FAULT | os_log_fault | Fault-level messages are always saved in the data store. They remain there until a storage quota is exceeded, at which point, the oldest messages are purged. Fault-level messages are intended for capturing system-level or multi-process errors only. If an activity object exists, logging at this level captures information for the entire process chain. |
 
 <a name="logging-log-messages"></a>
-### [8.3](#logging-log-messages) Logging Messages
+### [9.3](#logging-log-messages) Logging Messages
 
 Write meaningful log messages. This sounds easy but is in fact really hard. Keep in mind, that you sometimes log for the event of an error, which in reality occurs only rarely. 
 But if it does, you depend on a clear log message along with an expressive payload. A good log message must consist of the following items:
@@ -916,12 +929,12 @@ But if it does, you depend on a clear log message along with an expressive paylo
 * An expressive payload, usually a JSON (That's why you must always add a description Method - see [here](#classes)
 
 <a name="logging-log-language"></a>
-### [8.4](#logging-log-language) Logging Message Language
+### [9.4](#logging-log-language) Logging Message Language
 
 Write your log messages in english. English is a well known language both in terms of writing and reading. Furthermore does it not contain any special characters, which means that it can be logged with ASCII. This is especially important when performing log rotation, since you do not know where your logs are stored.
 
 <a name="logging-payload"></a>
-### [8.5](#logging-payload) Logging Payload
+### [9.5](#logging-payload) Logging Payload
 
 Always log with payload (i.e. context).
 The log message often is not sufficient when tracing bugs. You almost always need additional information. So just log them along with the message and you keep yourself from deploying a new version of the app just to improve log messages.
@@ -942,13 +955,13 @@ Transaction '63287' failed: Checksum 'null' is invalid!
 **[back to top](#table-of-contents)**
 
 <a name="roadmap"></a>
-## [9](#roadmap) Roadmap
+## [10](#roadmap) Roadmap
 
 This section describes items, which will be added to this style guide in the future.
 These items are categorized in two sections namely `next` for items added in the next release and `future` for items added in future releases without a fixed date.
 
 <a name="roadmap-next"></a>
-### [9.1](#roadmap-next) Next
+### [10.1](#roadmap-next) Next
 
 * Swift conventions
 * Conventions for Logging
@@ -956,28 +969,28 @@ These items are categorized in two sections namely `next` for items added in the
 * Useful links
 
 <a name="roadmap-future"></a>
-### [9.2](#roadmap-future) Future
+### [10.2](#roadmap-future) Future
 
 * Linter for continuous integration based on this style guide
 
 **[back to top](#table-of-contents)**
 
 <a name="resources"></a>
-## [10](#resources) Resources
+## [11](#resources) Resources
 
 <a name="resources-documentation"></a>
-### [10.1](#resources-documentation) Documentation
+### [11.1](#resources-documentation) Documentation
 
 * [http://www.stack.nl/~dimitri/doxygen/manual/docblocks.html](http://www.stack.nl/~dimitri/doxygen/manual/docblocks.html)
 
 <a name="resources-logging"></a>
-### [10.2](#resources-logging) Logging
+### [11.2](#resources-logging) Logging
 
 * [http://doing-it-wrong.mikeweller.com/2012/07/youre-doing-it-wrong-1-nslogdebug-ios.html](http://doing-it-wrong.mikeweller.com/2012/07/youre-doing-it-wrong-1-nslogdebug-ios.html)
 * [https://developer.apple.com/documentation/os/logging](https://developer.apple.com/documentation/os/logging)
 
 <a name="resources-related-work"></a>
-### [10.3](#resources-related-work) Related Work
+### [11.3](#resources-related-work) Related Work
 
 This Style Guide is inspired by the following Style Guides:
 
@@ -989,14 +1002,14 @@ This Style Guide is inspired by the following Style Guides:
 **[back to top](#table-of-contents)**
 
 <a name="license"></a>
-## [11](#license) License
+## [12](#license) License
 
-(The MIT License)
+MIT License
 
-Copyright (c) 2017 appcom interactive GmbH
+Copyright (c) 2017-2018 appcom interactive GmbH
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
