@@ -767,10 +767,23 @@ Import headers using their path relative to the project’s source directory.
 #import "Shared/Util/Foo.h"
 ```
 
+<a name="objc-container-content-specification"></a>
+### [6.10](#objc-container-content-specification) Container content specification
+
+Whenever possible, specify the contents of a container class.
+
+```
+// good
+NSArray<NSString *> *relatedStrings;
+
+// bad
+NSArray *relatedStrings;
+```
+
 **[back to top](#table-of-contents)**
 
 <a name="objc-macros"></a>
-### [6.10](#objc-macros) Macros
+### [6.11](#objc-macros) Macros
 
 Avoid macros, especially where const variables, enums, XCode snippets, or C functions may be used instead.
 
@@ -825,7 +838,7 @@ Examples of acceptable macro use include assertion and debug logging macros that
 **[back to top](#table-of-contents)**
 
 <a name="objc-nonstandard-extensions"></a>
-### [6.11](#objc-nonstandard-extensions) Nonstandard Extensions
+### [6.12](#objc-nonstandard-extensions) Nonstandard Extensions
 
 Nonstandard extensions to C/Objective-C may not be used unless otherwise specified.
 
