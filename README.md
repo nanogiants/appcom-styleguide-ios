@@ -98,6 +98,11 @@ Don't use any dependency managers like Cocoapods.
 
 Dependencies should be found and structured at a well known place. Therefore these must be placed under the `deps` folder at the souce root. Precompiled libraries must be placed under the subfolder `lib` and the corresponding header files must be under the subfolder `include`. In the Xcode-Project the `Header Search Path` must contain the entry `$(SRCROOT)/deps/include` and the `Library Search Path` must contain `$(SRCROOT)/deps/lib`.
 
+<a name="dependencies-submodules"></a>
+### [3.4](#dependencies-submodules) Submodules
+
+Submodules must be added under `$(SRCROOT)/deps/_name_`. After this a Group `_Project_/deps` must be added to the xcode project. Within this group the submodule sources must be added to a subgroup with the module name (for example: `MyApp/deps/SubmoduleName`. Therefore this group is an exception to the [Folder](#dependencies-folder) rule and don't represents a folder on disk.
+
 **[back to top](#table-of-contents)**
 
 <a name="comments"></a>
