@@ -347,7 +347,7 @@ Braces are used with `if`, `else`, `for`, `do` and `while` statements, even when
 
 Braces have the following rules for nonempty blocks and block-like constructs:
 
-* Line break before the opening brace.
+* Line break before the opening brace (An exception are literals).
 * Line break after the opening brace.
 * Line break before the closing brace.
 * Line break after the closing brace, only if that brace terminates a statement or terminates the body of a method, constructor, or named class. For example, there is no line break after the brace if it is followed by a closing square bracket ( ] ) or a comma.
@@ -371,6 +371,12 @@ Braces have the following rules for nonempty blocks and block-like constructs:
 {
   // ...
 }]];
+
+// good
+NSDictionary *registerStringAttributes = @{
+    NSFontAttributeName : [UIFont appSemiBoldFontWithSize:17],
+    NSForegroundColorAttributeName : [UIColor placeTextColor]
+};
 
 // bad
 + (instancetype) init {
