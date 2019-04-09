@@ -334,6 +334,17 @@ A source file consists of, *in order*:
 <a name="objc-formatting"></a>
 ### [6.2](#objc-formatting) Formatting
 
+We recommend using the .clang-format file to ensure the observance of this styleguide. To properly use and integrate it in Xcode follow these steps:
+
+1. Download the latest version of [clang-format](http://releases.llvm.org/download.html) or download it with [homebrew](http://macappstore.org/clang-format/).
+2. Download the .clang-format file and save it in the source directory of your current project. We recommend saving it to your home directory additionally as a fallback.
+3. Download the format-on-save.sh script and save it anywhere on your machine (recommended: /Library/Developer/Xcode/ClangFormat (create new directory if not present).
+4. Open Xcode and create a new custom behavior. Set the checkmark to run a script. Select next to checkmark the format-on-save.sh script you just saved.
+5. Set the shortcut of the custom behavior to command+s and replace the already used shortcut if asked.
+6. Set the shortcut of "Save file" to shift+command+s.
+7. Use the shortcut command+s to save the currently viewed file and format it automaticly.
+8. Done!
+
 <a name="objc-formatting-braces"></a>
 #### [6.2.1](#objc-formatting-braces) Braces
 
@@ -506,6 +517,7 @@ switch (i)
     case 4:
     case 5:
     case 6: 
+    
     default: break;
 }
 ```
