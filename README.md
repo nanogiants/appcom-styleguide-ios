@@ -90,7 +90,22 @@ Make sure to migrate also major releases if possible.
 <a name="dependencies-library-provision"></a>
 ### [3.2](#dependencies-library-provision) Library provision
 
-Libraries must be included using git submodules if compiled within the project itself or using an artefact repository (like sonatype nexus) if precompiled. Provide a script for installing these if needed. The name of the script must be install-deps.sh and placed at the source root.
+Libraries must be included using git submodules if compiled within the project itself or using an artefact repository (like [Bintray](https://bintray.com/appcom-interactive)) if precompiled. Consider using [Conan](https://conan.io/) to install dependencies and provide a conanfile.txt. You can use the imports section to install the dependencies inside the `deps` folder which will satisfy the [Folder](#dependencies-folder) requirements. The following is an example for a conanfile.txt: 
+
+```
+[requires]
+openldap/2.4.46@appcom/stable
+
+[generators]
+xcode
+
+[imports]
+lib, *.dylib* -> ./deps/lib
+lib, *.a -> ./deps/lib
+include, * -> ./deps/include
+```
+
+Alternatively provide a script for installing the dependencies. The name of the script must be install-deps.sh and placed at the source root.
 Don't use any dependency managers like Cocoapods.
 
 <a name="dependencies-folder"></a>
